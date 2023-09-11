@@ -69,7 +69,8 @@ btn.addEventListener('click', (e) => {
   const modalWindow = Tag({
     tag: 'div',
     className: 'modal__window',
-    textContent: '',
+    textContent: `Hello, ${data.login} . We will phone you in 30 minutes by ${data.phoneNumber} number
+    Thanks for watching!`,
   });
   if (modalWindow || document.contains(modalWindow)) {
     btn.addEventListener('click', (e) => {
