@@ -38,6 +38,7 @@ function createCategoryButtons(categories) {
 function displayProducts(products) {
   const productsContainer = document.querySelector('.product-container');
   productsContainer.innerHTML = '';
+
   products.forEach((product) => {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
@@ -58,7 +59,7 @@ function toggleCategoryButtons() {
     categoryButtonsContainer.style.display = 'none';
     categoryButtonsVisible = false;
   } else {
-    categoryBtn.textContent = 'Hide category';
+    categoryBtn.textContent = 'Hide ';
     categoryButtonsContainer.style.display = 'block';
     categoryButtonsVisible = true;
   }
@@ -86,6 +87,17 @@ function showCategoryButtons() {
   categoryButtonsContainer.style.display = 'block';
   categoryButtonsVisible = true;
 }
+function createSortByPriceBtn(products) {
+  const sortByPrice = document
+    .createElement('button')
+    .addEventListener('click', () => {
+      products.sort((a, b) => a.price - b.price);
+    });
+  sortByPrice.textContent = 'Sort by price';
+  sortByPrice.className = 'sortByPriceBtn';
+  const buttonContainer = document.querySelector('.btn-container');
+  buttonContainer.appendChild(sortByPrice);
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   const categoryBtn = document.querySelector('.all-category-btn');
@@ -108,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
   allProductBtn.addEventListener('click', () => {
     if (!productCardCreated) {
       showAllProducts();
-      allProductBtn.textContent = 'Hide product';
+      allProductBtn.textContent = 'Hide';
     } else {
       toggleProductCards();
       allProductBtn.textContent = 'Show all products';
